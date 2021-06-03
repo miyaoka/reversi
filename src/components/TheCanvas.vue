@@ -71,6 +71,31 @@ export default () => (
       </p>
     </section>
 
+    <TheBoard>
+      {boardRowList.value.map((row, y) => (
+        <div class="flex flex-row gap-px">
+          {row.map(({ placed, candidate }, x) => (
+            <div class="w-4 h-4 flex items-center justify-center select-none bg-green-700">
+              {placed ? (
+                <div class={placed === "b" ? "text-black" : "text-white"}>
+                  ●
+                </div>
+              ) : (
+                candidate && (
+                  <div
+                    class="cursor-pointer w-full h-full bg-green-500 hover:bg-green-200"
+                    onClick={() => {
+                      setCell(x, y);
+                    }}
+                  ></div>
+                )
+              )}
+            </div>
+          ))}
+        </div>
+      ))}
+    </TheBoard>
+
     <section class="flex gap-4">
       <div
         class={`${
@@ -108,30 +133,6 @@ export default () => (
         auto: {autoMode.value ? "ON" : "OFF"}
       </button>
     </section>
-    <TheBoard>
-      {boardRowList.value.map((row, y) => (
-        <div class="flex flex-row gap-px">
-          {row.map(({ placed, candidate }, x) => (
-            <div class="w-4 h-4 flex items-center justify-center select-none bg-green-700">
-              {placed ? (
-                <div class={placed === "b" ? "text-black" : "text-white"}>
-                  ●
-                </div>
-              ) : (
-                candidate && (
-                  <div
-                    class="cursor-pointer w-full h-full bg-green-500 hover:bg-green-200"
-                    onClick={() => {
-                      setCell(x, y);
-                    }}
-                  ></div>
-                )
-              )}
-            </div>
-          ))}
-        </div>
-      ))}
-    </TheBoard>
   </TheContainer>
 );
 </script>
