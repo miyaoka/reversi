@@ -15,7 +15,7 @@ const {
   setCell,
   turnNext,
   autoPlace,
-} = useReversi();
+} = useReversi({ w: 16, h: 16 });
 
 init();
 
@@ -27,7 +27,6 @@ watch(autoMode, (val) => {
     handle = setInterval(() => {
       const canNext = autoPlace();
       if (!canNext) {
-        console.log(canNext);
         autoMode.value = false;
       }
     }, 1);
