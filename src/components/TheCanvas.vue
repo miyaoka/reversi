@@ -73,11 +73,14 @@ export default () => (
 
     <TheBoard>
       {boardRowList.value.map((row, y) => (
-        <div class="flex flex-row gap-px">
+        <div key={y} class="flex flex-row gap-px">
           {row.map(({ placed, candidate }, x) => (
             <div class="w-4 h-4 flex items-center justify-center select-none bg-green-700">
               {placed ? (
-                <div class={placed === "b" ? "text-black" : "text-white"}>
+                <div
+                  key={`${y}:${x}`}
+                  class={placed === "b" ? "text-black" : "text-white"}
+                >
                   ●
                 </div>
               ) : (
