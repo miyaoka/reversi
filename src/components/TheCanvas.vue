@@ -72,13 +72,13 @@ export default () => (
       </p>
     </section>
 
-    <section class="flex">
+    <section class="flex gap-4">
       <div
         class={`${
-          currentMove.value === "b" && "bg-gray-300"
+          currentMove.value === "b" && "border-b-4 border-black"
         } w-[100px] flex justify-center`}
       >
-        b: {score.value.b}
+        B: {score.value.b}
       </div>
       <meter
         min="0"
@@ -88,12 +88,13 @@ export default () => (
       />
       <div
         class={`${
-          currentMove.value !== "b" && "bg-gray-300"
+          currentMove.value !== "b" && "border-b-4 border-black"
         } w-[100px] flex justify-center`}
       >
-        w: {score.value.w}
+        W: {score.value.w}
       </div>
     </section>
+
     <section class="flex gap-4">
       <button class="p-2 border" onClick={() => turnNext()}>
         pass
