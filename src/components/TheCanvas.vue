@@ -102,35 +102,35 @@ export default () => (
 
     <section class="flex gap-4 mt-2 items-center">
       <div
-        class={`border-l-8 bg-black text-white w-[80px] flex justify-center ${
+        class={`border-l-8 w-[64px] flex justify-center ${
           currentMove.value === "b" && "border-yellow-300"
         } ${
-          isFinished.value &&
-          score.value.b >= score.value.w &&
-          "bg-red-500 text-black"
+          isFinished.value && score.value.b >= score.value.w
+            ? "bg-red-500 text-black"
+            : "bg-black text-white"
         }`}
       >
         B:{score.value.b}
       </div>
-      <div class="w-[500px] h-[16px] border bg-white relative">
+      <div class="w-[200px] h-[16px] border bg-gray-100 relative">
         <div
           class="bg-black h-full"
           style={{
             width:
               Math.floor(
-                (500 * score.value.b) / (score.value.b + score.value.w)
+                (200 * score.value.b) / (score.value.b + score.value.w)
               ) + "px",
           }}
         ></div>
-        <div class="absolute w-px top-0 bottom-0 left-0 right-0 m-auto bg-gray-500"></div>
+        <div class="absolute w-[2px] top-0 bottom-0 left-0 right-0 m-auto bg-gray-400"></div>
       </div>
       <div
-        class={`border-r-8 bg-gray-100 w-[80px] flex justify-center ${
+        class={`border-r-8 w-[64px] flex justify-center ${
           currentMove.value !== "b" && "border-yellow-300"
         } ${
-          isFinished.value &&
-          score.value.w >= score.value.b &&
-          "bg-red-500 text-white"
+          isFinished.value && score.value.w >= score.value.b
+            ? "bg-red-500 text-white"
+            : "bg-gray-100 text-black"
         }`}
       >
         W:{score.value.w}
