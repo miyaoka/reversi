@@ -137,10 +137,13 @@ export const useReversi = (options?: { w?: number; h?: number }) => {
     const baseW = Math.ceil(Math.random() * (col.value - 2));
     const baseH = Math.ceil(Math.random() * (row.value - 2));
 
-    _setCell(baseW, baseH, "b");
-    _setCell(baseW + 1, baseH, "w");
-    _setCell(baseW, baseH + 1, "w");
-    _setCell(baseW + 1, baseH + 1, "b");
+    const color1 = Math.random() < 0.5 ? "b" : "w";
+    const color2 = color1 === "b" ? "w" : "b";
+
+    _setCell(baseW, baseH, color1);
+    _setCell(baseW + 1, baseH, color2);
+    _setCell(baseW, baseH + 1, color2);
+    _setCell(baseW + 1, baseH + 1, color1);
   };
 
   const init = () => {
