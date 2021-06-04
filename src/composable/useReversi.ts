@@ -133,17 +133,25 @@ export const useReversi = (options?: { w?: number; h?: number }) => {
     });
   };
 
+  const setIsle = () => {
+    const baseW = Math.ceil(Math.random() * (col.value - 2));
+    const baseH = Math.ceil(Math.random() * (row.value - 2));
+
+    _setCell(baseW, baseH, "b");
+    _setCell(baseW + 1, baseH, "w");
+    _setCell(baseW, baseH + 1, "w");
+    _setCell(baseW + 1, baseH + 1, "b");
+  };
+
   const init = () => {
     skipped.value = 0;
     board.value = initBoard(col.value, row.value);
 
-    const halfW = Math.ceil(col.value / 2) - 1;
-    const halfH = Math.ceil(row.value / 2) - 1;
+    let count = Math.random() * ((col.value * row.value) / 64);
 
-    _setCell(halfW, halfH, "b");
-    _setCell(halfW + 1, halfH, "w");
-    _setCell(halfW, halfH + 1, "w");
-    _setCell(halfW + 1, halfH + 1, "b");
+    while (count-- > 0) {
+      setIsle();
+    }
     updateCandidate("b");
     currentTurn.value = 0;
   };
