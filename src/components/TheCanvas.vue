@@ -11,6 +11,7 @@ const {
   currentMove,
   currentTurn,
   score,
+  isFinished,
   init,
   setCell,
   turnNext,
@@ -101,11 +102,15 @@ export default () => (
 
     <section class="flex gap-4 mt-2 items-center">
       <div
-        class={`border-l-8 bg-black text-white w-[60px] flex justify-center ${
-          currentMove.value === "b" && "border-green-500"
+        class={`border-l-8 bg-black text-white w-[80px] flex justify-center ${
+          currentMove.value === "b" && "border-yellow-300"
+        } ${
+          isFinished.value &&
+          score.value.b >= score.value.w &&
+          "bg-red-500 text-black"
         }`}
       >
-        {score.value.b}
+        B:{score.value.b}
       </div>
       <div class="w-[500px] h-[16px] border bg-white relative">
         <div
@@ -120,11 +125,15 @@ export default () => (
         <div class="absolute w-px top-0 bottom-0 left-0 right-0 m-auto bg-gray-500"></div>
       </div>
       <div
-        class={`border-r-8 bg-gray-100 w-[60px] flex justify-center ${
-          currentMove.value !== "b" && "border-green-500"
+        class={`border-r-8 bg-gray-100 w-[80px] flex justify-center ${
+          currentMove.value !== "b" && "border-yellow-300"
+        } ${
+          isFinished.value &&
+          score.value.w >= score.value.b &&
+          "bg-red-500 text-white"
         }`}
       >
-        {score.value.w}
+        W:{score.value.w}
       </div>
     </section>
 

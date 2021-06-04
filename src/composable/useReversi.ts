@@ -204,6 +204,7 @@ export const useReversi = (options?: { w?: number; h?: number }) => {
     currentMove,
     currentTurn,
     score,
+    isFinished,
     turnNext,
     getCell,
     setCell,
