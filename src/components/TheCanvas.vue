@@ -99,26 +99,32 @@ export default () => (
       ))}
     </TheBoard>
 
-    <section class="flex gap-4">
+    <section class="flex gap-4 mt-2 items-center">
       <div
-        class={`${
-          currentMove.value === "b" && "border-b-4 border-black"
-        } w-[100px] flex justify-center`}
+        class={`border-l-8 bg-black text-white w-[60px] flex justify-center ${
+          currentMove.value === "b" && "border-green-500"
+        }`}
       >
-        B: {score.value.b}
+        {score.value.b}
       </div>
-      <meter
-        min="0"
-        max={score.value.b + score.value.w}
-        value={score.value.b}
-        class="w-[200px] h-[30px]"
-      />
+      <div class="w-[500px] h-[16px] border bg-white relative">
+        <div
+          class="bg-black h-full"
+          style={{
+            width:
+              Math.floor(
+                (500 * score.value.b) / (score.value.b + score.value.w)
+              ) + "px",
+          }}
+        ></div>
+        <div class="absolute w-px top-0 bottom-0 left-0 right-0 m-auto bg-gray-500"></div>
+      </div>
       <div
-        class={`${
-          currentMove.value !== "b" && "border-b-4 border-black"
-        } w-[100px] flex justify-center`}
+        class={`border-r-8 bg-gray-100 w-[60px] flex justify-center ${
+          currentMove.value !== "b" && "border-green-500"
+        }`}
       >
-        W: {score.value.w}
+        {score.value.w}
       </div>
     </section>
 
